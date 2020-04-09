@@ -1,0 +1,88 @@
+java.io.File
+Path toPath()
+File[] listFiles()
+String getName()
+String getPath()
+
+
+RAMDirectory()、FSDirectory extends org.apache.lucene.store.Directory;
+static FSDirectory open(Path path)
+
+DirectoryReader
+static DirectoryReader open(Directory directory)
+
+IndexSearcher
+IndexSearcher(IndexReader r)
+TopDocs search(Query query, int n)
+Document doc(int docID)
+
+TermQuery
+TermQuery(Term t)
+
+Term
+Term(String fld, String text)
+
+TopDocs
+long totalHits
+ScoreDoc[] scoreDocs
+
+ScoreDoc
+int doc
+
+org.apache.lucene.document.Document
+final String get(String name)
+
+IndexReader implements Closeable
+void close()
+
+IndexWriterConfig()
+IndexWriterConfig(Analyzer analyzer)
+
+IndexWriter implements Closeable
+IndexWriter()
+IndexWriter(Directory d, IndexWriterConfig conf)
+long addDocument(Iterable<? extends IndexableField> doc)
+void close()
+long deleteAll()
+long deleteDocuments(Term... terms)
+long updateDocument(Term term, Iterable<? extends IndexableField> doc)
+
+org.apache.commons.io
+static String readFileToString(File file, String encoding)
+static long sizeOf(File file)
+
+org.apache.lucene.document.TextField extend Field
+TextField(String name, String value, Store store)
+
+org.apache.lucene.document.Field implements IndexableField
+public static enum Store {
+        YES,
+        NO;
+
+StoredField extends Field
+StoredField(String name, String value)
+
+LongPoint extends Field
+LongPoint(String name, long... point)
+static Query newRangeQuery(String field, long lowerValue, long upperValue)
+
+
+Document
+void add(IndexableField field)
+
+abstract class Analyzer implements Closeabl
+TokenStream tokenStream(String fieldName, String text)
+
+StandardAnalyzer extends Analyzer
+IKAnalyzer extends Analyzer
+
+abstract class TokenStream implements Closeable
+<T extends Attribute> T addAttribute(Class<T> attClass)
+ void reset()
+ abstract boolean incrementToken()
+ void close()
+
+QueryParser
+QueryParser(String f, Analyzer a)
+Query parse(String query)
+
